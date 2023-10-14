@@ -40,7 +40,7 @@
 ```
 
 __Output__:
-![[Pasted image 20231013192230.png]]
+<img width="363" alt="Pasted image 20231013192230" src="https://github.com/sriram23/vanakkam-react/assets/18396996/01a46d35-583b-4f00-8f1b-734c3edaf620">
 
 > Task: Create Hello World, but this time use js to build it
 
@@ -89,7 +89,8 @@ __Output__:
 ```
 
 __Output__:
-![[Pasted image 20231013200719.png]]
+<img width="460" alt="Pasted image 20231013200719" src="https://github.com/sriram23/vanakkam-react/assets/18396996/35bdea62-f2fa-40e4-bfb0-7331f0c175ff">
+
 
 > How to do the same thing with __React__?
 
@@ -196,7 +197,8 @@ __Output__:
 </html>
 ```
 __Output__:
-![[Pasted image 20231013211935.png]]
+<img width="396" alt="Pasted image 20231013211935" src="https://github.com/sriram23/vanakkam-react/assets/18396996/2c127d86-7198-48b5-b0ca-4461a4e22ab1">
+
 
 # Part 3
  - Let's move all the js things to a js file called `App.js`
@@ -222,7 +224,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(heading);
 ```
 __Output__:
-![[Pasted image 20231014133335.png]]
+<img width="405" alt="Pasted image 20231014133335" src="https://github.com/sriram23/vanakkam-react/assets/18396996/5c942df0-e862-410d-9918-cfca58b4d2ed">
+
 
  - Let's create `index.css`
  - import the index.css in our html
@@ -305,7 +308,8 @@ __index.css__:
 }
 ```
 __Output__:
-![[Pasted image 20231014135108.png]]
+<img width="415" alt="Pasted image 20231014135108" src="https://github.com/sriram23/vanakkam-react/assets/18396996/bf6c403f-c74f-404e-a274-6ac724c2c911">
+
 
 - The `root.render`'s job is nothing but taking the react element object, create the h1 tag which browser can understand and inject it inside the root element.
 - Read more about `React Element`, `render`, `createRoot`, `createElement` -> _TODO_
@@ -361,8 +365,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent);
 ```
 __Output__:
-![[Pasted image 20231014140809.png]]
-![[Pasted image 20231014141001.png]]
+<img width="400" alt="Pasted image 20231014140809" src="https://github.com/sriram23/vanakkam-react/assets/18396996/30cff5e8-8019-4dd1-bcf5-93cdc0b1b862">
+
+<img width="414" alt="Pasted image 20231014141001" src="https://github.com/sriram23/vanakkam-react/assets/18396996/1691edaa-4fe0-4285-910a-5605be52ddd1">
+
  - The react object is transformed to html, which the browser understands well and is been injected to the root element. React takes care of it behind the scenes.
 - How to create sibilings?
 	- Like div -> div -> __h1,h2__?
@@ -384,9 +390,11 @@ const parent = React.createElement("div", {id: "parent"},
 
                                   ]))
 ```
-![[Pasted image 20231014142231.png]]
+<img width="420" alt="Pasted image 20231014142231" src="https://github.com/sriram23/vanakkam-react/assets/18396996/101aa933-6286-422d-b968-7801b1356797">
+
 - But here React will throw an error, that something we need like a unique "key" prop
-![[Pasted image 20231014142356.png]]
+<img width="421" alt="Pasted image 20231014142356" src="https://github.com/sriram23/vanakkam-react/assets/18396996/ed13831c-b1ee-4a2c-88fe-f67eef2eaea8">
+
 - We will see in detail about this in future episodes
 - Now, what if we need to create a child 2 in the same structure?
 	- Like div -> div->h1->h2, div ->h1->h2
@@ -419,7 +427,8 @@ const parent = React.createElement("div", {id: "parent"},
 
                                 ])
 ```
-![[Pasted image 20231014142932.png]]
+<img width="573" alt="Pasted image 20231014142932" src="https://github.com/sriram23/vanakkam-react/assets/18396996/69bb156a-b2f5-4b74-993c-f57d3a8e5295">
+
 - But looks so messy...!
 - It makes life harder...!
 - The more complex the structure grows, the code goes even more complex..
