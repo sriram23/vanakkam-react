@@ -1,0 +1,19 @@
+{
+  "name": "vanakkam-react",
+  "version": "1.0.0",
+  "description": "This is Sriram's version of Namaste React by Akshay Saini",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sriram23/vanakkam-react.git"
+  },
+  "author": "Sriram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sriram23/vanakkam-react/issues"
+  },
+  "homepage": "https://github.com/sriram23/vanakkam-react#readme"
+}

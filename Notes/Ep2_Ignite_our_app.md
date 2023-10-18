@@ -1,0 +1,62 @@
+# Part 1
+ - Push the code to GitHub repository.
+ - `git init` -> Will make our project to git repo, with master branch.
+ - `git branch -M main` -> Will make `main` as the main branch.
+ - `git add .` -> Stages the changes in the current directory.
+ - `git commit -m "Episode One"` -> Committing the code.
+ - _TODO:_ Learn the difference between `git` and `github`.
+ - `git add remote` -> Copy paste from github (__Akshay__ recommends not to just copy paste, do it manually).
+ - `git push origin main` -> Push the code to remote.
+ - Keeping pushing code to Git
+
+> Let's Ignite our app
+
+ - Is the code written so far is ready to push to prd?
+ - What's the issue in this code?
+ - It's not an optimized code.
+ - No comments, no logs.
+ - We need to bundle / Compress files
+ - Need to optimize images.
+ - Need to do lot of processing before pushing code to production.
+
+ - Will react itself do a fast production ready app?
+	 - No
+	 - There are lot of other packages there to make our app production ready
+	 - React is not the only thing which makes our app fast
+	 - How to get those apps to the project
+ - NPM
+	 - Not "Node Package Manager"
+	 - But is it just a Package Manager
+	 - NPM does not have a full form
+	 - NPM just manages packages
+	 - Standard repository for all packages
+	 - create react app has the npm ready with it
+- npm init
+	- Don't use -y 
+	- It will ask few questions
+	- Provide details
+		- package name: namaste-react
+		- version: 1.0.0
+		- description: This is Namaste React by Akshay Saini
+		- entry point: App.js
+		- test command: jest
+		- git repository: `<url>`
+		- keyword: react, namaste react, akshay saini
+		- author: Akshay Saini
+		- license: (ISC)
+	- It will show the json and ask whether the details are fine
+- Now we will see pacakge.json
+	- A config for our npm
+	- Nothing but a json file
+	- Why do we need?
+		- It manages all the packages that are installed
+		- These packages are also called dependencies
+		- Takes care of version of dependencies
+- Let's get the packages into our project
+- Start installing the dependencies
+- Most important package -> Bundler
+	- Whole code needs to be cached, bundles, cleaned
+	- Bundler takes care of it
+- Webpack, Parcel, Vite are some eg of bundler.
+- Packages the project, so that it can be pushed to production
+- Create React App behind the scene uses webpack
