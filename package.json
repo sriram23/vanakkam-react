@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sriram23/vanakkam-react/issues"
   },
-  "homepage": "https://github.com/sriram23/vanakkam-react#readme"
+  "homepage": "https://github.com/sriram23/vanakkam-react#readme",
+  "devDependencies": {
+    "parcel": "^2.10.0"
+  }
 }
