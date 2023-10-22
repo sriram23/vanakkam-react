@@ -351,7 +351,7 @@ In the above cases, it will definitely work in browsers that are provided in the
 
 - Where we'll get to know about the configurations?
 	- https://browserslist.dev/
-	- ![[Pasted image 20231022163840.png]]
+	- ![image](https://github.com/sriram23/vanakkam-react/assets/18396996/247e05fd-68da-4590-aa11-2ae204bfb81c)
 - Why we do these configs?
 	- In order to support huge variety of browsers, lot of different bundles would be created. In order to avoid it, we are very specific about browsers.
 	- It is up to the scenario. It's all about the end users.
