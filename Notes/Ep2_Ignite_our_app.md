@@ -192,3 +192,174 @@
 - If we have both the files, we can re-create the node modules.
 - All we need to do is `npm install`
 - This will pull all the dependencies and create the node modules.
+- Whatever we can regenerate, we should not put on Git.
+
+# Part 2
+- We are going to ignite our app
+- `npx parcel index.html`
+- Syntax -> `npx parcel <source file>`
+- In the console, we will get a message `Server running at http://localhost:1234`
+- Open the `localhost:1234` in browser, we will see our app running.
+- What is npx?
+	- Just like we have npm, we have something known as npx
+	- npx is executing a package, whereas npm is for installing
+	- That means we are executing parcel.
+- Parcel goes to our source file, which is nothing but our index.html and will build a development build for our app.
+- And hosts that build to localhost:1234
+
+- Earlier, we brought in the React via the CDN. But we can bring in React using npm also!
+- CDN links is __not a preferred way__ to bring in React & React dom into our project.
+- Fetching from CDN is a costly op, as it fetching from internet.
+- In case of npm, it will be available in node modules and we need not want to rely on internet for everytime.
+- If there is a new upgrade is available, then we have to keep changing the CDN url.
+- In case of npm, it's easy to manage (Remeber the `^` and `~`.
+
+- Now let's install react via npm.
+- `npm install react`
+- We are not using `-D` here, because we need React as a normal dependency and not as a dev dependency (We need react in the prod server).
+- Now after installing react, we will see the react listed in dependencies in `package.json`
+```json
+"dependencies": {
+
+    "react": "^18.2.0"
+
+  }
+```
+- React will be there inside the package-lock and node module as well.
+- Let's install react-dom as well.
+- `npm i react-dom`
+- Here `i` is nothing but a shorthand of `install`.
+- Now in the package.json dependencies, we will have react and react-dom
+```json
+"dependencies": {
+
+    "react": "^18.2.0",
+
+    "react-dom": "^18.2.0"
+
+  }
+```
+- Now, we no longer need the CDN.
+- Will this work now?
+- Start our server `npx parcel index.html`
+- We will get an error, `React is not defined`.
+- Reason is we just installed react, but our code does not understand, where the React is coming from.
+- How to use react from node_modules?
+	- We use import
+	- `import React from "react"`
+	- This means `React` is coming from `react` package in the node module
+	- Similarly for React Dom: `import ReactDOM from "react-dom"`
+- Will this work?
+	- Now we will get `Browser scripts cannot have imports or exports` error.
+	- One new thing now is we are getting a nice well formatted error.
+	- What does `Browser scripts cannot have imports or exports` mean?
+	- In html, we inject the App.js in script tag. It treats the script as a browser script, which is nothing but plain js.
+	- It cannot understand what is `import`. It's not a normal js.
+	- Now we need to tell the browser that it is not a normal browser script, it's a __module__.
+	- Need to add `type=module` in the script tag
+```html
+<script type="module" src="./App.js"></script>
+```
+- Now the error would go and app would work.
+- Now the react is coming from `node_module` and not from the CDN links!
+- We will get a warning in the console, `Warning: You are importing createRoot from "react-dom" which is not supported. You should instead import it from "react-dom/client"`
+- Earlier we use to import it from "react-dom" now we need to import it from "react-dom/client"
+- `import ReactDOM from "react-dom/client"`
+
+- Let's see a magic now
+- Now when we change anything in the component, it will update real-time on the browser, as soon as we save.
+- This powerful thing is done by our beast "Parser"  
+- This is called `HMR` => `Hot Module Replacement`
+- Parcel makes DX (Developer Experience) so smooth
+- How parcel using that?
+	- Parcel uses a file watching algorithm, written in C++
+- As soon as we save any change, the parcel will build once again.
+- The build time will reduce on subsequent saves after first run.
+	- Reason: Parcel is caching things for us
+	- Where things are being cached?
+		- `.parcel-cache` folder created, where we have the cache as binaries or unknown format.
+- Parcel also does "Image optimization". The most expensive thing in a website is loading the image.
+- When making prod build, it will minify our files.
+- Will bundle our files (That's why we call it as a bundler and bundling is it's basic job)
+- Compress our files.
+> Many people think that React App are fast, because React is fast.
+
+- But the reality is when we build a largescale app, there are lot more things we need other than just React.
+- React makes app fast, but it is not the only thing that makes the app faster.
+
+- Parcel in turn also not doing everything on it's own, it does has some libraries to perform a specific minification.
+- Parcel is like a manager for these supporting libraries.
+- Akshay's example: Akshay compares React and Parcel to PM Modi and HM Amit Shah.
+- For all these reasons, Akshay says "Parcel is such a beast.."
+- Parcel also does "Consistent Hashing" -> _TODO: This itself is a huge topic, read about it_
+- Parcel will do code splitting
+- It does "Differential Bundling" for our app
+	- Means: Cross browser compatibility, and backward compatibility (Ability to run in older browsers as well)
+	- It generates different bundles for different browsers for smooth running
+- Error handling -> Like how we saw for module error earlier
+- Diagnostics
+- Tree shaking algorithm:
+	- Will remove un-used code for us.
+- Different build and bundle for Dev and Production.
+- How do we know parcel does these things?
+	- Documentation: https://parceljs.org/
+	- Explore it!
+	- __Read about it!__
+
+- How to make prod build?
+	- `npx parcel build index.html`
+	- We will end-up in an error for the main file in package.json
+	- In package.json, we have App.js as entry point, whereas in the parcel we give index.html as entry point (The npx command). This creates a conflict.
+	- Solution is just to remove the "main" in package.json
+	- Now it will work
+- Once we build the prod app, where does the prod file goes?
+	- Inside the `dist` folder.
+- Prod build takes longer time compared to dev build.
+- 3 main files
+	- index.html
+	- a css file
+	- a js file
+- There may be some other map files as well.
+- These 3 files contain all the code of our app.
+- This will be fast, performant and optimal.
+
+- `.parcel-cache` and `dist` are regeneratable. So don't have to put it in git.
+- Add it to `.gitignore`
+- We have sufficient info to regenerate.
+
+- Let's make our app compatible for older version browsers
+- For that we will use something called `browserslist`
+- It will already be there in the node_modules
+- But we need to tell which all browsers I need to support my app
+- So we'll need to configure something
+- Search browserslist on internet or go to: https://browserslist.dev/
+- We'll configure it in package.json.
+- We'll define "browserslist" in package.json, that takes an array.
+```json
+"browserslist": [
+	"last 2 Chrome version" // this means the app only will work on latestst and second latest chrome browsers
+]
+```
+Similarly,
+```json
+"browserslist": [
+	"last 2 Chrome version" // this means the app only will work on latestst and second latest chrome browsers
+	"last 2 Firefox version"
+]
+```
+In the above cases, it will definitely work in browsers that are provided in the configuration list, but may or may not work in other browsers.
+
+- Where we'll get to know about the configurations?
+	- https://browserslist.dev/
+	- ![[Pasted image 20231022163840.png]]
+- Why we do these configs?
+	- In order to support huge variety of browsers, lot of different bundles would be created. In order to avoid it, we are very specific about browsers.
+	- It is up to the scenario. It's all about the end users.
+	- Consider a scenario of govt. website (like IRCTC), then we'll have to support all the browsers. It should work on almost all old browsers.
+	- In our case of Namaste React, everybody using are the devs, who most probably have the latest version of browsers. We can configure accordingly.
+- There is a query composition in the browserslist website (https://github.com/browserslist/browserslist#query-composition).
+- We can give country specific configuration also.
+
+- With all these things, we now have created our own version of __create react app__.
+
+> End of Episode 2
