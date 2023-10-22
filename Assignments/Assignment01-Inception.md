@@ -91,6 +91,11 @@
         - `<script async src="..."/>`
     - __Deferred__: The script is fetched in parallel and executed only after the html parsing has finished.
         - `<script defer src="..."/>`
+     
+   Reference Image from Akshay's video:
+   
+   <img width="635" alt="image" src="https://github.com/sriram23/vanakkam-react/assets/18396996/9868feb5-d3d5-46f8-bdde-9f452dd107e7">
+
  - When to use what?
     - Async doesn't guarantee the order of execution of script. Shouldn't be used if the scripts are dependencies on each other. In that case, defer should be used.
     - If the scripts are independent, then go with defer.
@@ -101,6 +106,7 @@
 >  - VS Code
 >  - Chrome
 >  - Extensions of Chrome
+
 Done!
 
 >Create a new Git repo
